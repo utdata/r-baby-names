@@ -6,7 +6,9 @@ output:
 knit: (function(inputFile, encoding) { rmarkdown::render(inputFile, encoding = encoding, output_dir = "docs") })
 ---
 
-Testing here is to import a bunch of csv files into a single dataframe. Note the files in `data-test` had a header row added by hand, which the social security files don't have. This would not be doable for all the data, but you _should_ be able to create a tibble with the names first and then ignore header on import and then bind them to it. Perhaps.
+Testing here is to import a bunch of csv files into a single dataframe.
+
+Note for this example the files in `data-test` had a header row added by hand, which the social security files don't have when downloaded. This would be tedious for all the data, but perhaps an answer would be to create a tibble with the names first and then ignore header on import and then bind them to it. Perhaps.
 
 
 ```{r setup, echo=T, results='hide', message=F, warning=F}

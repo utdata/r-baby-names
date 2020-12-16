@@ -1685,7 +1685,8 @@ summary {
 </div>
 
 
-<p>Testing here is to import a bunch of csv files into a single dataframe. Note the files in <code>data-test</code> had a header row added by hand, which the social security files don’t have. This would not be doable for all the data, but you <em>should</em> be able to create a tibble with the names first and then ignore header on import and then bind them to it. Perhaps.</p>
+<p>Testing here is to import a bunch of csv files into a single dataframe.</p>
+<p>Note for this example the files in <code>data-test</code> had a header row added by hand, which the social security files don’t have when downloaded. This would be tedious for all the data, but perhaps an answer would be to create a tibble with the names first and then ignore header on import and then bind them to it. Perhaps.</p>
 <pre class="r"><code>library(tidyverse)
 library(janitor)</code></pre>
 <pre class="r"><code># looks at a folder and gets files that have &quot;.txt&quot;

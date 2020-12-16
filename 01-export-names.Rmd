@@ -1,0 +1,40 @@
+---
+title: "Baby names export"
+output:
+  html_document:
+    df_print: paged
+knit: (function(inputFile, encoding) { rmarkdown::render(inputFile, encoding = encoding, output_dir = "docs") })
+---
+
+This uses the built-in R [babynames](https://github.com/hadley/babynames) package to get all names and then exports them. It has an advantage over the Social Security version in that it has the `prop` field, or the proportion of children born with that name in each year.
+
+Downside is it is only update through 2017 as of this writing.
+
+
+```{r setup, echo=T, results='hide', message=F, warning=F}
+library(fs)
+library(tidyverse)
+library(janitor)
+library(babynames)
+```
+
+```{r getnames}
+names <- babynames %>% 
+  arrange(year %>% desc()) %>% 
+  rename(
+    count = n
+  )
+
+names %>% 
+  head()
+```
+
+```{r export}
+names %>% write_csv("data-out/names-all.csv")
+
+# write since 1980
+names %>% 
+  filter(year > 1979) %>% 
+  write_csv("data-out/names-since80.csv")
+```
+
